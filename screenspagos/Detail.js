@@ -32,8 +32,8 @@ function Detail  ({navigation})  {
                         <View
                             style={{
                                 backgroundColor:"#FFF",
-                                height:80,
-                                width: 80,
+                                height:30,
+                                width: 70,
                                 borderRadius: 5,
                                 elevation: 5,
                                 marginTop: 50,
@@ -89,7 +89,7 @@ function Detail  ({navigation})  {
                 <View
                     style={{
                         flexDirection:"row",
-                        marginTop: -60,
+                        marginTop: -55,
                         marginHorizontal: 17,
                         alignItems: "center"
                     }}
