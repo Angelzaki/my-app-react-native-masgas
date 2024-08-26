@@ -44,6 +44,34 @@ function PedirBalon ({navigation})  {
                 <Text style={styles.productPrice}>$12</Text>
                 </View>
               </TouchableOpacity>
+              <TouchableOpacity
+                title='Detail'
+                onPress={() => navigation.navigate('Detail')}
+              >
+                <Image
+                source={require('./images/balon1.png')}
+                style={styles.productImage}
+                />
+                <View style={styles.productInfo}>
+                <Text style={styles.productName}>Gas Premium</Text>
+                <Text style={styles.productWeight}>10 Kg</Text>
+                <Text style={styles.productPrice}>$12</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                title='Detail'
+                onPress={() => navigation.navigate('Detail')}
+              >
+                <Image
+                source={require('./images/balon1.png')}
+                style={styles.productImage}
+                />
+                <View style={styles.productInfo}>
+                <Text style={styles.productName}>Gas Premium</Text>
+                <Text style={styles.productWeight}>10 Kg</Text>
+                <Text style={styles.productPrice}>$12</Text>
+                </View>
+              </TouchableOpacity>
             </View>
         </View>
     );
