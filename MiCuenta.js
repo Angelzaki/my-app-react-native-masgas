@@ -12,7 +12,7 @@ const MyAccountScreen = () => {
         />
         <View style={styles.profileContainer}>
           <Image
-            source={require('./images/account-icon.png')} // Imagen de perfil
+            source={require('./images/ZAKI.png')} // Imagen de perfil
             style={styles.profileImage}
           />
           <Text style={styles.profileName}>Angel Salazar</Text>

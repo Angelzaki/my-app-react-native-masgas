@@ -39,15 +39,6 @@ const MyTabs = () => {
                     headerShown: false,
                 }}
             />
-            <Tab.Screen name='ChatBot' component={Chatbot} 
-                options={{
-                    tabBarLabel: 'ChatBot',
-                    tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="robot" color={color} size={size} />
-                    ),
-                    headerShown: false,
-                }}
-            />
             <Tab.Screen name='Pedir Balon' component={PedirBalonNavigator} 
                 options={{
                     tabBarLabel: 'Pedir Balon',
