@@ -4,7 +4,7 @@
   <img src="https://github.com/Angelzaki/my-app-react-native-masgas/images/logo2.png" width="280" alt="LOGO">
 </div>
 
-## 💻 Mas Gas 🔥: 
+## 📱 Mas Gas 🔥: 
 Arreglo Ya es una aplicación innovadora diseñada para conectar a los usuarios con especialistas en mantenimiento del hogar. Con nuestra plataforma, podrás encontrar fácilmente profesionales confiables y eficientes para cualquier tarea doméstica, basándote en una evaluación detallada de su desempeño en trabajos anteriores.
 
 La dificultad para encontrar servicios de mantenimiento del hogar fiables y de calidad es una preocupación común, exacerbada por la falta de información verificable y de transparencia en el proceso de contratación. Arreglo aborda este problema al proporcionar un sistema claro y transparente que facilita la comunicación y asegura que el especialista seleccionado cumpla con tus expectativas.
