@@ -47,64 +47,10 @@ La dificultad para encontrar servicios de mantenimiento del hogar fiables y de c
     <th>Portfolio</th>
   </tr>
   <tr>
-    <td>Leon</td>
-    <td>Lederhos Sturich</td>
-    <td>BackEnd / Project Manager</td>
-    <td><a href="https://www.linkedin.com/in/leon-lederhos-1500661a3/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-  <tr>
-    <td>Rodys</td>
-    <td>Rodriguez</td>
-    <td>Backend</td>
-    <td><a href="https://www.linkedin.com/in/rodys-rodriguez-b0460b1aa/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-   <tr>
-    <td>Leonel</td>
-    <td>Amaya</td>
-    <td>Backend</td>
-    <td><a href="https://www.linkedin.com/in/leonelamaya/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-   <tr>
-    <td>Karen</td>
-    <td>Schneider</td>
-    <td>UX/UI</td>
-    <td><a href="https://www.linkedin.com/in/schneider-karen/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-  <tr>
-    <td>Consuelo</td>
-    <td>León</td>
-    <td>UX/UI</td>
-    <td><a href="https://www.linkedin.com/in/consuelo-leon-abarca/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-     <tr>
-    <td>Sabrina</td>
-    <td>Ortiz</td>
-    <td>UX/UI</td>
-    <td><a href="https://www.linkedin.com/in/sabrina-micaela-ortiz/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-    <tr>
-    <td>Cristian</td>
-    <td>Dal Piva</td>
-    <td>UX/UI</td>
-    <td><a href="https://www.linkedin.com/in/cristiandalpiva/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-    <tr>
-    <td>Matias</td>
-    <td>Stagnitta</td>
-    <td>QA</td>
-    <td><a href="https://www.linkedin.com/in/matias-stagnitta/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-    <tr>
     <td>Angel</td>
-    <td>Zaki</td>
-    <td>QA/Frontend</td>
-    <td><a href="https://www.linkedin.com/in/angel-salazar-maylle-36236b198/" target="_blank">Ver LinkedIn</a></td>
-  </tr>
-    <tr>
-    <td>Carolina</td>
-    <td>Arteaga</td>
-    <td>QA Tester</td>
-    <td><a href="https://www.linkedin.com/in/carola02/" target="_blank">Ver LinkedIn</a></td>
+    <td>Salazar Maylle</td>
+    <td>Project Manager</td>
+    <td><a href="[https://www.linkedin.com/in/leon-lederhos-1500661a3/](https://www.linkedin.com/in/angel-salazar-maylle-36236b198/)" target="_blank">Ver LinkedIn</a></td>
   </tr>
 </table>
 <br>
@@ -122,7 +68,6 @@ La dificultad para encontrar servicios de mantenimiento del hogar fiables y de c
     
 ![Static Badge](https://img.shields.io/badge/Figma-%23F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 <!-- TECNOLOGÍAS POR VERIFICAR
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
