@@ -5,9 +5,9 @@
 </div>
 
 ## 📱 Mas Gas 🔥: 
-Arreglo Ya es una aplicación innovadora diseñada para conectar a los usuarios con especialistas en mantenimiento del hogar. Con nuestra plataforma, podrás encontrar fácilmente profesionales confiables y eficientes para cualquier tarea doméstica, basándote en una evaluación detallada de su desempeño en trabajos anteriores.
+El proyecto MASGAS se centra en la implementación de una Arquitectura Orientada a Servicios (SOA) para transformar la gestión de ventas y distribución de gas en una aplicación móvil avanzada. Utilizando Node.js para el backend y Firebase para la gestión de bases de datos, el sistema garantiza una infraestructura escalable, segura y eficiente. La aplicación permite a los usuarios gestionar pedidos de gas envasado de manera fluida, conectando proveedores con clientes a través de una interfaz optimizada. Además, integra autenticación segura, monitoreo en tiempo real y servicios adicionales que mejoran la experiencia tanto para proveedores como para clientes, facilitando la escalabilidad del negocio y la optimización operativa.
 
-La dificultad para encontrar servicios de mantenimiento del hogar fiables y de calidad es una preocupación común, exacerbada por la falta de información verificable y de transparencia en el proceso de contratación. Arreglo aborda este problema al proporcionar un sistema claro y transparente que facilita la comunicación y asegura que el especialista seleccionado cumpla con tus expectativas.
+Este proyecto ofrece soluciones tecnológicas avanzadas como el procesamiento en tiempo real, la automatización de procesos manuales y la gestión inteligente de datos, todo con el objetivo de mejorar la eficiencia operativa de MASGAS.
 
 ## Público Objetivo 🏠🏢👫
 
