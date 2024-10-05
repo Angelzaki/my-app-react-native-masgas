@@ -49,8 +49,36 @@ La dificultad para encontrar servicios de mantenimiento del hogar fiables y de c
   <tr>
     <td>Angel</td>
     <td>Salazar Maylle</td>
+    <td>Project Manager / Desarrollador </td>
+    <td><a href="https://www.linkedin.com/in/angel-salazar-maylle-36236b198/" target="_blank">Ver LinkedIn</a></td>
+  </tr>
+  <tr>
+    <td>Ricardo</td>
+    <td>Pumarrumi Viera</td>
+    <td>Scrum Master / Desarrollador</td>
+    <td><a href="https://www.linkedin.com/in/ricardo-fernando-pumarrumi-viera-b89aa1288/" target="_blank">Ver LinkedIn</a></td>
+  </tr>
+  <tr>
+    <td>Gabriel</td>
+    <td>Trujillo</td>
     <td>Project Manager</td>
-    <td><a href="[https://www.linkedin.com/in/leon-lederhos-1500661a3/](https://www.linkedin.com/in/angel-salazar-maylle-36236b198/)" target="_blank">Ver LinkedIn</a></td>
+    <td><a href="https://www.linkedin.com/in/gabriel-trujillo-7989492a7/" target="_blank">Ver LinkedIn</a></td>
+  </tr>
+   <tr>
+    <td>Henry</td>
+    <td>García Cancho</td>
+    <td>Desarrollador</td>
+    <td><a href="https://www.linkedin.com/in/henry-garc%C3%ADa-cancho-3a4269235/" target="_blank">Ver LinkedIn</a></td>
+  </tr>
+  <tr>
+    <td>Jean Pier</td>
+    <td>Ticlla Livia</td>
+    <td>Desarrollador</td>
+  </tr>
+  <tr>
+    <td>Emerson</td>
+    <td>Soncco Alvarado</td>
+    <td>Desarrollador</td>
   </tr>
 </table>
 <br>
