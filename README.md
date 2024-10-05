@@ -1,7 +1,7 @@
 <h1 align="center"> MasGas Version Movil 🌎</h1>
 
 <div align="center">
-  <img src="https://github.com/Angelzaki/my-app-react-native-masgas/tree/main/images/logo2.png" width="280" alt="LOGO">
+  <img src="https://github.com/Angelzaki/my-app-react-native-masgas/images/logo2.png" width="280" alt="LOGO">
 </div>
 
 ## 💻 Arreglo Ya 👷‍♂️: 
