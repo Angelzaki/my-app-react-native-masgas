@@ -12,29 +12,30 @@ Este proyecto ofrece soluciones tecnológicas avanzadas como el procesamiento en
 ## Público Objetivo 🏠🏢👫
 
 ### Nuestros Clientes y su Propósito
-🟩  Propietarios de Viviendas: Personas que desean realizar reparaciones o mejoras en sus hogares y buscan profesionales de confianza con experiencia comprobada.
 
-🟩  Arrendatarios: Inquilinos que necesitan solucionar problemas domésticos rápidamente y desean garantizar que los trabajos se realicen de manera eficiente y transparente.
+🟩 Propietarios de Viviendas y Empresas: Personas y negocios que necesitan una forma sencilla y confiable de gestionar el suministro de gas envasado para sus hogares, negocios, o instalaciones. Buscan comodidad y seguridad en la entrega y el uso de servicios relacionados con el gas.
 
-🟩  Familias y Profesionales Ocupados: Personas con agendas apretadas que valoran la facilidad y rapidez en la contratación de servicios de calidad sin complicaciones adicionales.
+🟩 Arrendatarios: Inquilinos que requieren pedidos rápidos y confiables de gas, sin complicaciones adicionales, y que desean una solución que les permita recibir el suministro de manera eficiente, incluso cuando están fuera de sus viviendas.
 
+🟩 Familias y Profesionales Ocupados: Usuarios que valoran la facilidad de gestión de sus pedidos de gas, incluyendo la capacidad de realizar órdenes a través de una aplicación móvil con disponibilidad a cualquier hora y el seguimiento en tiempo real del pedido.
 
 ### Insights clave
 
-⌚ La disponibilidad es un factor clave: Los usuarios valoran mucho la capacidad de encontrar profesionales disponibles fuera de su horario laboral.
+⌚ Disponibilidad: Los usuarios valoran mucho la capacidad de pedir y recibir gas en momentos fuera del horario laboral habitual, facilitando su rutina.
 
-⭐ Las referencias son importantes: Las recomendaciones de amigos y conocidos influyen significativamente en la elección del profesional.
+⭐ Confianza en el Proveedor: La reputación y opiniones de otros clientes sobre los distribuidores de gas son factores importantes en la decisión de compra.
 
-💸 La transparencia en los precios es fundamental: Los usuarios desean conocer de antemano el costo del servicio y que se les detalle los materiales utilizados.
+💸 Transparencia en el Precio: Los usuarios desean conocer de antemano el costo del suministro de gas, así como cualquier cargo adicional.
 
-🔮 La valoración de otros usuarios es un factor a considerar: Los usuarios buscan plataformas o herramientas que les permitan conocer las opiniones de otros clientes sobre los profesionales.
+🔮 Valoración de los Distribuidores: Los usuarios prefieren plataformas que les permitan conocer la calidad del servicio a través de la valoración de otros clientes.
 
 ## Necesidades clave
-🔹​ Encontrar profesionales de confianza por área de trabajo que puedan realizar arreglos y mantenimientos de calidad en hogares.
 
-🔹​ Conocer de antemano las labores del profesional que se quiere contratar visualizando su perfil de la mano de reseñas y calificaciones de otros usuarios.
+🔹​ Acceso a Proveedores Confiables: Encontrar proveedores de gas envasado que puedan cumplir con la calidad y seguridad necesaria para sus hogares o negocios.
 
-🔹​ Tener una comunicación clara y fluida con los profesionales para hacer Arreglos ya!.
+🔹​ Información Clara del Servicio: Poder visualizar el perfil del proveedor de gas y las reseñas de otros usuarios, asegurando una contratación informada.
+
+🔹​ Comunicación Fluida con el Proveedor: Tener un canal claro y eficiente para comunicarse con el proveedor durante la solicitud y la entrega del gas.
 
 
 <h2 align="center">✨ Equipo de trabajo ✨</h2>
@@ -113,6 +114,8 @@ Este proyecto ofrece soluciones tecnológicas avanzadas como el procesamiento en
     
 
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) 
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 
 
 <!-- TECNOLOGÍAS POR VERIFICAR
