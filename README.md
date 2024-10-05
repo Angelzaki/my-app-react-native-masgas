@@ -111,7 +111,7 @@ La dificultad para encontrar servicios de mantenimiento del hogar fiables y de c
 
 
 <div align='center'>
-  <h1>🛠️ Tecnologías Utilizadas ⚡</h1>
+  <h1>🛠️ Tecnologías que estan siendo Utilizadas ⚡</h1>
 </div>
 
 <div align='center'>
