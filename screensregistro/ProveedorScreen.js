@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, ScrollView, StyleSheet, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import firestore from '@react-native-firebase/firestore';
+import { db } from '../../my-app/firebase-config'; // Ajusta la ruta de importación
+import { collection, doc, setDoc } from 'firebase/firestore'; // Funciones necesarias para Firestore
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase Authentication
+import { useNavigation } from '@react-navigation/native';
+
 export default function FormularioRegistroProveedorMasGas() {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
@@ -14,17 +18,41 @@ export default function FormularioRegistroProveedorMasGas() {
   const [descripcionServicio, setDescripcionServicio] = useState('');
   const [experiencia, setExperiencia] = useState('');
   const [areaServicio, setAreaServicio] = useState('');
+  const [password, setPassword] = useState(''); // Campo para la contraseña
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const navigation = useNavigation();
+
   const handleSubmit = async () => {
-    if (!nombre || !apellido || !email || !telefono || !nombreEmpresa || !direccion || !ruc || !tipoServicio || !descripcionServicio || !experiencia || !areaServicio) {
-      Alert.alert('Error', 'Por favor, completa todos los campo');
+    if (
+      !nombre ||
+      !apellido ||
+      !email ||
+      !telefono ||
+      !nombreEmpresa ||
+      !direccion ||
+      !ruc ||
+      !tipoServicio ||
+      !descripcionServicio ||
+      !experiencia ||
+      !areaServicio ||
+      !password
+    ) {
+      Alert.alert('Error', 'Por favor, completa todos los campos.');
       return;
     }
-    
+
     setIsSubmitting(true);
+
+    const auth = getAuth();
+
     try {
-      await firestore().collection('proveedores').add({
+      // Registrar al proveedor en Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Guardar datos adicionales en Firestore
+      await setDoc(doc(db, 'Proveedores', user.uid), {
         nombre,
         apellido,
         email,
@@ -36,12 +64,31 @@ export default function FormularioRegistroProveedorMasGas() {
         descripcionServicio,
         experiencia,
         areaServicio,
+        fechaRegistro: new Date().toISOString(),
       });
-      Alert.alert('Éxito', 'Formulario enviado con éxito. Un administrador de MasGas revisará tu información.');
-      setIsSubmitting(false);
+
+      Alert.alert('Éxito', 'Proveedor registrado correctamente. Un administrador revisará tu información.');
+
+      // Reiniciar campos
+      setNombre('');
+      setApellido('');
+      setEmail('');
+      setTelefono('');
+      setNombreEmpresa('');
+      setDireccion('');
+      setRuc('');
+      setTipoServicio('');
+      setDescripcionServicio('');
+      setExperiencia('');
+      setAreaServicio('');
+      setPassword('');
+
+      // Redirigir al Login
+      navigation.navigate('Login');
     } catch (error) {
-      console.error(error);
-      Alert.alert('Error', 'Hubo un problema al enviar el formulario');
+      console.error('Error al registrar proveedor:', error);
+      Alert.alert('Error', 'Hubo un problema al registrar el proveedor.');
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -55,18 +102,12 @@ export default function FormularioRegistroProveedorMasGas() {
       <TextInput placeholder="Teléfono" value={telefono} onChangeText={setTelefono} keyboardType="phone-pad" style={styles.input} />
       <TextInput placeholder="Nombre de la Empresa" value={nombreEmpresa} onChangeText={setNombreEmpresa} style={styles.input} />
       <TextInput placeholder="Dirección" value={direccion} onChangeText={setDireccion} style={styles.input} />
-      <TextInput placeholder="RUC" value={ruc} onChangeText={setRuc} style={styles.input} />
-      
-      <Text style={styles.label}>Tipo de Servicio</Text>
-      <Picker selectedValue={tipoServicio} onValueChange={(itemValue) => setTipoServicio(itemValue)} style={styles.picker}>
-        <Picker.Item label="Selecciona el tipo de servicio" value="" />
-        <Picker.Item label="Instalación de Gas" value="instalacion" />
-        <Picker.Item label="Mantenimiento de Sistemas de Gas" value="mantenimiento" />
-        <Picker.Item label="Reparación de Fugas" value="reparacion" />
-        <Picker.Item label="Revisión de Seguridad" value="revision" />
-        <Picker.Item label="Distribución de Gas" value="distribucion" />
+      <TextInput placeholder="RUC" value={ruc} onChangeText={setRuc} keyboardType="numeric" style={styles.input} />
+      <Picker selectedValue={tipoServicio} onValueChange={setTipoServicio} style={styles.picker}>
+        <Picker.Item label="Selecciona el Tipo de Servicio" value="" />
+        <Picker.Item label="Distribución de Gas" value="Distribución de Gas" />
+        <Picker.Item label="Mantenimiento de Redes de Gas" value="Mantenimiento de Redes de Gas" />
       </Picker>
-
       <TextInput
         placeholder="Descripción del Servicio"
         value={descripcionServicio}
@@ -75,9 +116,20 @@ export default function FormularioRegistroProveedorMasGas() {
         style={[styles.input, styles.textarea]}
       />
       <TextInput placeholder="Años de Experiencia" value={experiencia} onChangeText={setExperiencia} keyboardType="numeric" style={styles.input} />
-      <TextInput placeholder="Área de Servicio (Ej: Lima Metropolitana, Callao)" value={areaServicio} onChangeText={setAreaServicio} style={styles.input} />
-      
-      <TouchableOpacity onPress={handleSubmit} disabled={isSubmitting} style={[styles.button, { backgroundColor: '#ff0000' }]}>
+      <TextInput
+        placeholder="Área de Servicio (Ej: Lima Metropolitana, Callao)"
+        value={areaServicio}
+        onChangeText={setAreaServicio}
+        style={styles.input}
+      />
+      <TextInput
+        placeholder="Contraseña"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={styles.input}
+      />
+      <TouchableOpacity onPress={handleSubmit} disabled={isSubmitting} style={[styles.button, { backgroundColor: isSubmitting ? '#ccc' : '#FF3D3D' }]}>
         {isSubmitting ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Enviar Registro a MasGas</Text>}
       </TouchableOpacity>
     </ScrollView>
@@ -105,11 +157,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     borderColor: '#231f20',
-  },
-  label: {
-    fontSize: 16,
-    color: '#231f20',
-    marginBottom: 5,
   },
   picker: {
     backgroundColor: '#fff',

@@ -6,20 +6,22 @@ const SettingsScreen = () => {
   const [isDarkMode, setIsDarkMode] = React.useState(false);
   const [isNotificationsEnabled, setIsNotificationsEnabled] = React.useState(true);
 
+  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={isDarkMode ? styles.containerDark : styles.container}>
       {/* Encabezado con sombra */}
-      <View style={styles.header}>
-        <Icon name="arrow-back" size={24} color="black" style={styles.backButton} />
-        <Text style={styles.headerTitle}>Ajustes</Text>
+      <View style={isDarkMode ? styles.headerDark : styles.header}>
+        <Icon name="arrow-back" size={24} color={isDarkMode ? '#FFF' : 'black'} style={styles.backButton} />
+        <Text style={isDarkMode ? styles.headerTitleDark : styles.headerTitle}>Ajustes</Text>
       </View>
 
       {/* Ajustes Generales */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Generales</Text>
+      <View style={isDarkMode ? styles.sectionDark : styles.section}>
+        <Text style={isDarkMode ? styles.sectionTitleDark : styles.sectionTitle}>Generales</Text>
         
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Notificaciones</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Notificaciones</Text>
           <Switch
             value={isNotificationsEnabled}
             onValueChange={setIsNotificationsEnabled}
@@ -29,17 +31,17 @@ const SettingsScreen = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Idioma</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Idioma</Text>
           <View style={styles.fake3D}>
             <Text style={styles.settingButton}>Español</Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Tema Oscuro</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Tema Oscuro</Text>
           <Switch
             value={isDarkMode}
-            onValueChange={setIsDarkMode}
+            onValueChange={toggleDarkMode}
             trackColor={{ false: '#767577', true: '#81b0ff' }}
             thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
           />
@@ -47,34 +49,34 @@ const SettingsScreen = () => {
       </View>
 
       {/* Seguridad */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Seguridad</Text>
+      <View style={isDarkMode ? styles.sectionDark : styles.section}>
+        <Text style={isDarkMode ? styles.sectionTitleDark : styles.sectionTitle}>Seguridad</Text>
         
         <TouchableOpacity style={[styles.settingItem, styles.securityItem]}>
-          <Text style={styles.settingText}>Cambiar Contraseña</Text>
-          <Icon name="lock-closed" size={24} color="#333" />
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Cambiar Contraseña</Text>
+          <Icon name="lock-closed" size={24} color={isDarkMode ? '#FFF' : "#333"} />
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.settingItem, styles.securityItem]}>
-          <Text style={styles.settingText}>Autenticación en Dos Pasos</Text>
-          <Icon name="shield-checkmark" size={24} color="#333" />
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Autenticación en Dos Pasos</Text>
+          <Icon name="shield-checkmark" size={24} color={isDarkMode ? '#FFF' : "#333"} />
         </TouchableOpacity>
       </View>
 
       {/* Soporte */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Soporte</Text>
+      <View style={isDarkMode ? styles.sectionDark : styles.section}>
+        <Text style={isDarkMode ? styles.sectionTitleDark : styles.sectionTitle}>Soporte</Text>
         
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Centro de Ayuda</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Centro de Ayuda</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Reportar un Problema</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Reportar un Problema</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.settingItem}>
-          <Text style={styles.settingText}>Información de la Aplicación</Text>
+          <Text style={isDarkMode ? styles.settingTextDark : styles.settingText}>Información de la Aplicación</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -86,8 +88,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F0F0F0',
   },
+  containerDark: {
+    flex: 1,
+    backgroundColor: '#333',
+  },
   header: {
-    backgroundColor: 'red',
+    backgroundColor: '#1C3D72',
     padding: 20,
     paddingTop: 40,
     flexDirection: 'row',
@@ -98,21 +104,51 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 4 },
   },
-  backButton: {
-    marginRight: 10,
+  headerDark: {
+    backgroundColor: '#222',
+    padding: 20,
+    paddingTop: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    elevation: 5, // Sombra para efecto 3D
+    shadowColor: '#000',
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
   },
   headerTitle: {
     fontSize: 24,
     color: '#FFF',
     fontWeight: 'bold',
   },
+  headerTitleDark: {
+    fontSize: 24,
+    color: '#DDD',
+    fontWeight: 'bold',
+  },
   section: {
-    marginTop: 20,
-    paddingHorizontal: 20,
+    padding: 20,
+    backgroundColor: 'white',
+    marginVertical: 10,
+    borderRadius: 10,
+    marginHorizontal: 20,
+  },
+  sectionDark: {
+    padding: 20,
+    backgroundColor: '#444',
+    marginVertical: 10,
+    borderRadius: 10,
+    marginHorizontal: 20,
   },
   sectionTitle: {
     fontSize: 18,
     color: '#333',
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  sectionTitleDark: {
+    fontSize: 18,
+    color: '#DDD',
     fontWeight: 'bold',
     marginBottom: 10,
   },
@@ -134,6 +170,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'black',
   },
+  settingTextDark: {
+    fontSize: 16,
+    color: '#FFF',
+  },
   settingButton: {
     fontSize: 16,
     color: '#FFF',
@@ -154,7 +194,14 @@ const styles = StyleSheet.create({
   },
   securityItem: {
     backgroundColor: 'red', // Fondo de color más claro para seguridad
-  }
+  },
+  settingButton: {
+    backgroundColor: '#FF3D3D',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
 });
 
 export default SettingsScreen;
