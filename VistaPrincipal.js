@@ -1,251 +1,314 @@
-import React from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Image, TextInput, FlatList, ScrollView} from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import { LinearGradient } from "expo-linear-gradient";
-import Detail from './screenspagos/Detail'
-
-const GasDistributorItem = ({ item }) => (
-    <View style={styles.itemContainer}>
-      <Image
-        source={require('./images/solgas.jpeg')}
-        style={styles.image}
-      />
-      <View style={styles.infoContainer}>
-        <Text style={styles.title}>{item.name}</Text>
-        <Text style={styles.address}>{item.address}</Text>
-        <Text style={styles.details}>{item.distance}</Text>
-        <Text style={styles.rating}>{item.rating}</Text>
-      </View>
-    </View>
-  );
-  
-const distributors = [
-      {
-        id: '1',
-        name: 'Lima gas Distribuidora',
-        address: 'Av. 10 de agosto N89-236',
-        distance: '25min/2,5km',
-        rating: '4,5 ★ (4000+)',
-      },
-      // Agregar mas sucesivamente
-      {
-        id: '2',
-        name: 'Sol gas Distribuidora',
-        address: 'Av. 18 de septiembre T345',
-        distance: '45min/4,5km',
-        rating: '3,5 ★ (3000+)',
-      },
-];
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image, TextInput, ScrollView, Modal, Alert } from "react-native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { collection, getDocs, addDoc, doc, updateDoc, increment } from "firebase/firestore";
+import { db } from "./firebase-config";
 
 const VistaPrincipal = () => {
-    return (
-        <View style={{
-            backgroundColor: '#FFF',
-            flex:1
-        }}
-        >
-        <View style={{
-                backgroundColor:'#FF0000',
-                height:"25%",
-                borderBottomLeftRadius: 0,
-                borderBottomRightRadius: 0,
-                paddingHorizontal:20,
-            }}>
-                <Image
-                    source={require('./images/logo3.png')}
-                    style={{
-                        height:35,
-                        width:"30%",
-                        marginTop: 30
-                    }}
-                >
-                </Image>
-                <LinearGradient
-                    colors ={['#FF0000', "transparent"]}
-                    style={{
-                        left:0,
-                        right:0,
-                        height: 70,
-                        margin: 0
-                    }}
-                >
-                    <View style={{
-                        backgroundColor: "#FFF",
-                        paddingVertical: 8,
-                        paddingHorizontal: 8,
-                        marginHorizontal: 10,
-                        borderRadius: 10,
-                        marginTop: 30,
-                        flexDirection: "row",
-                        alignItems: "center"
-                    }}>
-                        <TextInput
-                            placeholder="Buscar Tienda"
-                            placeholderTextColor="#E1E1E1"
-                            style={{
-                                fontWeight:"bold",
-                                fontSize: 20,
-                                width: 160
-                            }}
-                        >
-                        </TextInput>
-                        <Image
-                            source={require('./images/busqueda.png')}
-                            style={{height:20, width:20}}
-                        >
-                        </Image>
-                    </View>
-                </LinearGradient>
-                <View style={{
-                    flexDirection:'row',
-                    marginTop: 15,
-                    width: '100%'
-                }}
-                >
-                    <View>
-                        <Text style={{
-                            fontSize:15,
-                            color: '#FFF',
-                            fontWeight: "bold",
-                            width:"100%",
-                            
-                        }}
-                        >
-                            Ubicación Actual: Av 6 de diciembre 170589
-                        </Text>
-                    </View>
-                </View>
-            </View>
-            <Image
-                  source={require('./images/banner-image.png')}
-                  style={{width:400, height: 150}}
-                  >
-            </Image>
-            <View style={styles.header}>
-                      <Text style={styles.headerText}>100 tiendas</Text>
-                      <Text style={styles.filterText}>Filtro</Text>
-            </View>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator
-              style={{height: 400}}
-            >
-              <TouchableOpacity
-              onPress={() => navigation}
-                style={{
-                  height:250,
-                  elevation: 2,
-                  backgroundColor: '#FFF',
-                  marginLeft: 20,
-                  marginTop: 20,
-                  borderRadius: 15,
-                  marginBottom: 10,
-                  width: 250
-                }}
-              >
-                <View style={styles.container}>
-                    <View style={styles.itemContainer}>
-                      <Image
-                        source={require('./images/solgas.jpeg')}
-                        style={styles.image}
-                      />
-                      <View style={styles.infoContainer}>
-                        <Text style={styles.title}>Sol gas Distribuidora</Text>
-                        <Text style={styles.address}>Av. 18 de septiembre T345</Text>
-                        <Text style={styles.details}>45min/4,5km</Text>
-                        <Text style={styles.rating}>3,5 ★ (3000+)</Text>
-                      </View>
-                    </View>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{
-                  height:250,
-                  elevation: 2,
-                  backgroundColor: '#FFF',
-                  marginLeft: 20,
-                  marginTop: 20,
-                  borderRadius: 15,
-                  marginBottom: 10,
-                  width: 300
-                }}
-              >
-                <View style={styles.container}>
-                    <View style={styles.itemContainer}>
-                      <Image
-                        source={require('./images/solgas.jpeg')}
-                        style={styles.image}
-                      />
-                      <View style={styles.infoContainer}>
-                        <Text style={styles.title}>Sol gas Distribuidora</Text>
-                        <Text style={styles.address}>Av. 18 de septiembre T345</Text>
-                        <Text style={styles.details}>45min/4,5km</Text>
-                        <Text style={styles.rating}>3,5 ★ (3000+)</Text>
-                      </View>
-                    </View>
-                </View>
-              </TouchableOpacity>
-            </ScrollView>
-        </View>
+  const [providers, setProviders] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProviders, setFilteredProviders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState(null);
+  const [ratingModalVisible, setRatingModalVisible] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
+  useEffect(() => {
+    const fetchProviders = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "Proveedores"));
+        const providersList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProviders(providersList);
+        setFilteredProviders(providersList);
+      } catch (error) {
+        console.error("Error al obtener proveedores:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProviders();
+  }, []);
+
+  useEffect(() => {
+    const filtered = providers.filter((provider) =>
+      provider.nombre?.toLowerCase().includes(searchTerm.toLowerCase())
     );
-}
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#f0f0f0',
-    },
-    header: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      padding: 10,
-      backgroundColor: '#fff',
-      borderBottomWidth: 1,
-      borderBottomColor: '#e0e0e0',
-    },
-    headerText: {
-      fontSize: 16,
-      fontWeight: 'bold',
-    },
-    filterText: {
-      fontSize: 16,
-      color: '#007AFF',
-    },
-    itemContainer: {
-      backgroundColor: '#fff',
-      marginVertical: 8,
-      marginHorizontal: 16,
-      borderRadius: 8,
-      overflow: 'hidden',
-    },
-    image: {
-      width: '100%',
-      height: 150,
-      resizeMode: 'cover',
-    },
-    infoContainer: {
-      padding: 4,
-    },
-    title: {
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-    address: {
-      fontSize: 10,
-      color: '#666',
-      marginTop: 4,
-    },
-    details: {
-      fontSize: 10,
-      color: '#666',
-      marginTop: 2,
-    },
-    rating: {
-      fontSize: 12,
-      fontWeight: 'bold',
-      marginTop: 4,
+    setFilteredProviders(filtered);
+  }, [searchTerm, providers]);
+
+  const submitRating = async () => {
+    if (rating === 0) {
+      Alert.alert("Error", "Por favor selecciona una calificación.");
+      return;
     }
+
+    try {
+      const providerRef = doc(db, "Proveedores", selectedProvider.id);
+      await addDoc(collection(providerRef, "calificaciones"), {
+        calificacion: rating,
+        comentario: comment,
+        fecha: new Date(),
+      });
+
+      // Actualizar promedio de calificaciones (opcional)
+      await updateDoc(providerRef, {
+        promedioCalificaciones: increment(rating),
+        numeroDeCalificaciones: increment(1),
+      });
+
+      Alert.alert("Éxito", "Calificación enviada correctamente.");
+      setRating(0);
+      setComment("");
+      setRatingModalVisible(false);
+    } catch (error) {
+      console.error("Error al enviar calificación:", error);
+      Alert.alert("Error", "No se pudo enviar la calificación.");
+    }
+  };
+
+  return (
+    <View style={{ backgroundColor: "#FFF", flex: 1 }}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Image source={require("./images/logo3.png")} style={styles.logo} />
+        <View style={styles.searchContainer}>
+          <View style={styles.searchBox}>
+            <TextInput
+              placeholder="Buscar Tienda"
+              placeholderTextColor="#E1E1E1"
+              style={styles.searchInput}
+              value={searchTerm}
+              onChangeText={setSearchTerm}
+            />
+            <MaterialCommunityIcons name="magnify" size={20} color="#E1E1E1" />
+          </View>
+        </View>
+        <Text style={styles.locationText}>Ubicación Actual: Av 6 de diciembre 170589</Text>
+      </View>
+
+      {/* Banner */}
+      <Image source={require("./images/banner-image.png")} style={styles.bannerImage} />
+
+      {/* Lista de Proveedores */}
+      <ScrollView style={styles.distributorList}>
+        {filteredProviders.length > 0 ? (
+          filteredProviders.map((item) => (
+            <View key={item.id} style={styles.distributorCard}>
+              <Image source={require("./images/limagas.png")} style={styles.distributorImage} />
+              <View style={styles.distributorInfo}>
+                <Text style={styles.distributorName}>{item.nombre || "Nombre no disponible"}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    setSelectedProvider(item);
+                    setModalVisible(true);
+                  }}
+                >
+                  <MaterialCommunityIcons name="information" size={24} color="#1C3D72" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.rateButton}
+                  onPress={() => {
+                    setSelectedProvider(item);
+                    setRatingModalVisible(true);
+                  }}
+                >
+                  <Text style={styles.rateButtonText}>Calificar</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))
+        ) : (
+          <Text style={styles.noResultsText}>No se encontraron resultados.</Text>
+        )}
+      </ScrollView>
+
+      {/* Modal para calificar */}
+      <Modal
+        visible={ratingModalVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setRatingModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Califica al Proveedor</Text>
+            <Text style={styles.modalSubtitle}>Selecciona una calificación:</Text>
+            <View style={styles.ratingButtons}>
+              {[1, 2, 3, 4, 5].map((value) => (
+                <TouchableOpacity
+                  key={value}
+                  style={[
+                    styles.ratingButton,
+                    rating === value && styles.ratingButtonSelected,
+                  ]}
+                  onPress={() => setRating(value)}
+                >
+                  <Text style={styles.ratingButtonText}>{value}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <TextInput
+              style={styles.commentBox}
+              placeholder="Agregar un comentario (opcional)"
+              value={comment}
+              onChangeText={setComment}
+            />
+            <TouchableOpacity style={styles.submitButton} onPress={submitRating}>
+              <Text style={styles.submitButtonText}>Enviar Calificación</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: "#FF0000",
+    padding: 20,
+  },
+  logo: {
+    height: 35,
+    width: "30%",
+    marginBottom: 15,
+  },
+  searchContainer: {
+    marginTop: 10,
+    paddingVertical: 10,
+  },
+  searchBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF",
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    borderRadius: 10,
+  },
+  searchInput: {
+    flex: 1,
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#000",
+  },
+  locationText: {
+    fontSize: 14,
+    color: "#FFF",
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  bannerImage: {
+    width: "100%",
+    height: 150,
+    marginTop: 10,
+  },
+  distributorList: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  distributorCard: {
+    backgroundColor: "#FFF",
+    marginBottom: 15,
+    borderRadius: 10,
+    overflow: "hidden",
+    elevation: 2,
+  },
+  distributorImage: {
+    width: "100%",
+    height: 150,
+  },
+  distributorInfo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 10,
+    backgroundColor: "#FFF",
+  },
+  distributorName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  rateButton: {
+    backgroundColor: "#FF0000",
+    padding: 5,
+    borderRadius: 5,
+  },
+  rateButtonText: {
+    color: "#FFF",
+    fontWeight: "bold",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  modalContent: {
+    backgroundColor: "#FFF",
+    borderRadius: 10,
+    padding: 20,
+    width: "80%",
+    alignItems: "center",
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#333",
+  },
+  modalSubtitle: {
+    fontSize: 16,
+    color: "#333",
+    marginBottom: 10,
+  },
+  ratingButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 20,
+  },
+  ratingButton: {
+    backgroundColor: "#EEE",
+    padding: 10,
+    borderRadius: 5,
+    width: 50,
+    alignItems: "center",
+  },
+  ratingButtonSelected: {
+    backgroundColor: "#FFD700",
+  },
+  ratingButtonText: {
+    fontSize: 16,
+    color: "#333",
+    fontWeight: "bold",
+  },
+  commentBox: {
+    backgroundColor: "#FFF",
+    borderColor: "#CCC",
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    width: "100%",
+    marginVertical: 10,
+  },
+  submitButton: {
+    backgroundColor: "#FF0000",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  submitButtonText: {
+    color: "#FFF",
+    fontWeight: "bold",
+  },
 });
+
 export default VistaPrincipal;

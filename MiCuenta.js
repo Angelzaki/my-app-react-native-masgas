@@ -1,149 +1,164 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Linking, Alert } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
 const MyAccountScreen = () => {
+  const navigation = useNavigation();
+
+  const openWhatsApp = () => {
+    const phoneNumber = "987654321"; // Número de teléfono de WhatsApp sin espacios
+    const url = `whatsapp://send?phone=${phoneNumber}`;
+    
+    Linking.openURL(url).catch(() =>
+      Alert.alert("Error", "WhatsApp no está instalado en tu dispositivo")
+    );
+  };
+
+  const openMessenger = () => {
+    const messengerUserId = "angel.salazar"; // Nombre de usuario o ID de Messenger
+    const url = `fb-messenger://user-thread/${messengerUserId}`;
+    
+    Linking.openURL(url).catch(() =>
+      Alert.alert("Error", "Messenger no está instalado en tu dispositivo")
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
-      {/* Encabezado con imagen de fondo */}
       <View style={styles.header}>
+        <Text style={styles.headerText}>Angel</Text>
         <Image
-          source={require('./images/banner-image.png')}// Imagen de fondo
-          style={styles.backgroundImage}
+          source={require('./images/ZAKI.png')} // Imagen de perfil
+          style={styles.profileImage}
         />
-        <View style={styles.profileContainer}>
-          <Image
-            source={require('./images/ZAKI.png')} // Imagen de perfil
-            style={styles.profileImage}
-          />
-          <Text style={styles.profileName}>Angel Salazar</Text>
-          <TouchableOpacity style={styles.editProfileButton}>
-            <Text style={styles.editProfileButtonText}>Editar Perfil</Text>
+        <Text style={styles.providerName}>Makanaky la realeza</Text>
+      </View>
+
+      <View style={styles.infoSection}>
+        <Text style={styles.infoLabel}>DNI:</Text>
+        <Text style={styles.infoText}>12345678</Text>
+
+        <Text style={styles.infoLabel}>Teléfono:</Text>
+        <Text style={styles.infoText}>987-654-321</Text>
+
+        <Text style={styles.infoLabel}>Correo electrónico:</Text>
+        <Text style={styles.infoText}>angel.salazar@gmail.com</Text>
+      </View>
+
+      <View style={styles.actionSection}>
+        <Image
+          source={require('./images/logo2.png')} // Logo de MasGas
+          style={styles.logo}
+        />
+        <TouchableOpacity style={styles.editButton} onPress={() => navigation.navigate('screenEditar')}>
+          <Text style={styles.editButtonText}>Editar</Text>
+        </TouchableOpacity>
+        <View style={styles.connectButtons}>
+          <TouchableOpacity style={styles.connectButton} onPress={openWhatsApp}>
+            <Icon name="whatsapp" size={25} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.connectButton} onPress={openMessenger}>
+            <MaterialCommunityIcons name="facebook-messenger" size={25} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.connectButton} onPress={() => navigation.navigate('screenConectar')}>
+            <Text style={styles.connectButtonText}>Conectar</Text>
           </TouchableOpacity>
         </View>
-      </View>
-
-      {/* Información del Usuario */}
-      <View style={styles.userInfoSection}>
-        <Text style={styles.userInfoText}>Correo Electrónico: angel.salazar@gmail.com</Text>
-        <Text style={styles.userInfoText}>Teléfono: +51 962626272</Text>
-        <Text style={styles.userInfoText}>Dirección Principal: Av. SG 123</Text>
-      </View>
-
-      {/* Opciones de Cuenta */}
-      <View style={styles.optionsSection}>
-        <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionButtonText}>Historial de Pedidos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionButtonText}>Administrar Direcciones</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionButtonText}>Cambiar Contraseña</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionButton}>
-          <Text style={styles.optionButtonText}>Cerrar Sesión</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Configuración y Soporte */}
-      <View style={styles.settingsSection}>
-        <TouchableOpacity style={styles.settingButton}>
-          <Text style={styles.settingButtonText}>Soporte al Cliente</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.settingButton}>
-          <Text style={styles.settingButtonText}>Configuraciones</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.settingButton}>
-          <Text style={styles.settingButtonText}>Términos y Condiciones</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#E5E5E5',
   },
   header: {
-    backgroundColor: 'red', // Un color rojo tomate para el encabezado
-    height: 200,
+    backgroundColor: '#1C3D72',
+    paddingVertical: 20,
     alignItems: 'center',
-    justifyContent: 'center',
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
-  backgroundImage: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
-    opacity: 0.8,
-  },
-  profileContainer: {
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 3,
-    borderColor: '#FFF',
-  },
-  profileName: {
-    fontSize: 22,
-    color: '#FFF',
-    fontWeight: 'bold',
-    marginTop: 10,
-  },
-  editProfileButton: {
-    backgroundColor: 'red',
-    padding: 8,
-    borderRadius: 20,
-    marginTop: 10,
-  },
-  editProfileButtonText: {
+  headerText: {
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
+    marginBottom: 10,
   },
-  userInfoSection: {
+  profileImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 3,
+    borderColor: '#FFF',
+    marginBottom: 10,
+  },
+  providerName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1C3D72',
+  },
+  infoSection: {
     padding: 20,
-    backgroundColor: '#FFF',
-    marginBottom: 20,
+    backgroundColor: 'white',
+    marginVertical: 10,
     borderRadius: 10,
+    marginHorizontal: 20,
   },
-  userInfoText: {
+  infoLabel: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 10,
+  },
+  infoText: {
     fontSize: 16,
-    marginBottom: 10,
+    color: '#666',
+    marginBottom: 5,
   },
-  optionsSection: {
+  actionSection: {
+    alignItems: 'center',
     padding: 20,
-  },
-  optionButton: {
-    backgroundColor: 'red',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
+    backgroundColor: 'white',
+    marginHorizontal: 20,
     borderRadius: 10,
-    marginBottom: 10,
   },
-  optionButtonText: {
-    color: '#FFF',
+  logo: {
+    width: 100,
+    height: 50,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  editButton: {
+    backgroundColor: '#FF3D3D',
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+  editButtonText: {
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  settingsSection: {
-    padding: 20,
+  connectButtons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  settingButton: {
-    backgroundColor: '#FFF',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: 'red',
+  connectButton: {
+    marginHorizontal: 5,
+    backgroundColor: '#FF3D3D',
+    borderRadius: 5,
+    padding: 10,
   },
-  settingButtonText: {
-    color: 'black',
+  connectButtonText: {
+    color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
